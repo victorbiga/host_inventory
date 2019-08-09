@@ -1,0 +1,17 @@
+---
+- name: Create a host inventory with system info
+  hosts: localhost
+  tasks:
+
+  - name: Create directory
+    file:
+      path: out
+      state: directory
+
+  - name: Collect data
+    become_user: vagrant
+    command: ansible -m setup --tree out/ all
+
+  - name: Visualise
+    command: ansible-cmdb -d out/ > overview.html
+
