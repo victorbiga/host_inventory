@@ -1,5 +1,5 @@
 #!/bin/bash
 
-mkdir /tmp/out
 ansible -m setup --tree /tmp/out/ all
-ansible-cmdb /tmp/out/ > /tmp/overview.html
+ansible-cmdb -t markdown /tmp/out/ > overview.md
+ansible-cmdb -t markdown_split /tmp/out
